@@ -1,0 +1,43 @@
+#!/bin/tcsh
+
+# fix lc_all warnings
+setenv LC_ALL "en_US.UTF8"
+setenv LC_CTYPE "en_US.UTF8"
+
+# python related
+setenv PYTHONSTARTUP "$HOME/etc/pythonstart"
+setenv PYTHONPATH "${HOME}/python"
+setenv PYTHONDONTWRITEBYTECODE 1
+
+
+# profile
+setenv PWD $cwd
+setenv EDITOR vim 
+setenv PATH .:$HOME/bin:/usr/local/bin:$PATH
+setenv MANPATH /usr/man:/usr/local/man:/usr/lang/man:/usr/local/man:/usr/local/share:/usr/local/share/man:/usr/share/man
+setenv EMAIL redesigndavid@gmail.com
+
+if (`uname` == 'Darwin') then
+    set prompt = '%B%{\033[32m%}%B%~%b %{^[[0m%}%b> '
+
+    ## interactive shell settings
+    # colors in terminal
+    setenv CLICOLOR 1
+    setenv LS_COLORS GxFxCxDxBxegedabagaced 
+
+    # set completions
+    set autolist
+    set complete enhance
+
+    # put all aliases in ~/.aliases
+    source ~/.aliases
+    
+    # bindkeys
+    bindkey  ^p history-search-backward
+    bindkey  ^n history-search-forward
+
+    # init project
+    source ~/projects/projects/bin/init_projects
+
+endif # if Linux
+setenv PATH /usr/local/bin:$PATH

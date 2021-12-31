@@ -1,0 +1,85 @@
+alias a alias			# good starting place:
+        				# an alias for alias :-) 
+
+# Disk Management Tools
+a  chksp    'du -sk ./* | sort -n | less'
+a  d         dirs
+a  df        df -k
+a  hogs     '( if (\!* != "") cd \!* ; du -sk * | sort -r -n | head  > /dev/tty) >& /dev/null' 
+a  megs     '( if (\!* != '') cd \!*; echo "Files and sizes in megabytes under `pwd`" ; find `pwd` -type f -exec ls -al "{}" \; | sort -k9 | awk '\''{printf "%-60s %-4.4f M\n", $9, $5/1040576; total += $5; sum++} END {printf "\n%.4f Megs total in %d files\n", total/1040576, sum}'\'')'
+a  du 	    'du -h \!*'
+
+# Command/History aliases
+a  h         history
+a  hg       'history | grep \!*'
+a  j         jobs
+
+# Directory Aliases
+a  u        cd ..
+a  uu       cd ../..
+a  uuu      cd ../../..
+a  uuuu     cd ../../../..
+a  mcd      'mkdir \!*; cd \!*'
+a  mcdp     'mkdir -p \!*;cd \!*'
+a  pop      popd
+a  f        "find . -name '\!*' -print"     #find file
+
+# If using gnome-terminal, remove prompt change when changing directory.
+# If you prefer to use aterm, you may want to comment this out so your
+# aterm title will include the name of the current directory.
+unalias cwdcmd
+
+# ls aliases
+a  ls       'ls -Gh'
+a  ll       'ls -al'
+a  lt       'ls -lt'
+a  ltr      'ls -ltr'
+a  new      'ls -lAt \!* | head -20'
+a  newm     'ls -lt \!* | more'
+
+# System Utilities
+a  mem      'echo "IPCS-VFBS";echo;echo;ipcs;psmem;echo "";echo "Free Memory:"`freemem`'
+a  psa      "ps -eaf | fgrep -v root " 
+a  psg      'psa | egrep \!*'
+
+
+# Obaq aliases
+# If your show does not have its own script for this, uncomment:
+#a  stats     jsift \!\* \$SHOTDIR/HDR.\$SHOT \| awk \'BEGIN\{printf \"%-40.40s %8.8s %8.8s %8.8s %8.8s\\n\",\"phase\",\"start\",\"time\",\"mem\",\"tmp\"\}\$1\!=\"mem=\"\{ph=\$0\;gsub\(\"\	\",\"\ \ \",ph\)\;sub\(\" @.\*\",\"\",ph\)\;st=\$3\;ti=\$4}\$1==\"mem=\"\{printf \"%-40.40s %8.2f %8.2f %8.0f %8.0f\\n\",ph,st,ti,\$2,\$5\}\'
+
+# Other programs
+a jot       nedit
+a fixx      'xsetroot -cursor_name left_ptr -fg black -bg white'
+a xlock     'xscreensaver-command -lock'
+a e         'vi'
+
+# a ssh ' \ssh -X -Y \!*; '
+
+a hpremote '/opt/hpremote/rgreceiver/rgreceiver.sh'
+
+# My Own Aliases
+a Rm 	    "rm -rf"
+a rm        "rm -i "
+
+
+a updatecrons "cat ~/crons/mycrons.txt | crontab -"
+
+a pythoni python -i -c \"execfile\(\'/etc/pythonstart\'\)\;execfile\(\'\!\*\'\)\" 
+
+# todo
+a t todo.sh
+
+# folders
+a dl cd ~/Downloads
+
+# new vim
+#a vim 'nvim'
+a vi 'vim'
+a e 'vim'
+#
+a rewifi 'networksetup -setairportpower en0 off && sleep 3 && networksetup -setairportpower en0 on'
+
+a pulseon 'launchctl load -w /Library/LaunchAgents/net.juniper.pulsetray.plist'
+a pulseoff 'launchctl unload -w /Library/LaunchAgents/net.juniper.pulsetray.plist'
+
+a mplayerx '/Applications/MPlayerX.app/Contents/MacOS/MPlayerX'
