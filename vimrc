@@ -11,6 +11,7 @@ Plug 'easymotion/vim-easymotion'
 Plug 'junegunn/goyo.vim'
 Plug 'w0rp/ale'
 Plug 'jnurmine/Zenburn'
+Plug 'edkolev/tmuxline.vim'
 Plug 'vim-airline/vim-airline'
 Plug 'vim-airline/vim-airline-themes'
 Plug 'tomasr/molokai'
@@ -96,12 +97,6 @@ ia pyqtpdb from PyQt4.QtCore import pyqtRemoveInputHook;  # XXXpyqtRemoveInputH
 let g:signify_vcs_list = ['perforce', 'git']
 let g:signify_realtime = 0
 let g:signify_cursorhold_normal = 0
-
-"set background=dark
-"colorscheme molokai
-
-"hi CursorLine   cterm=NONE ctermbg=darkred ctermfg=white guibg=darkred guifg=white
-"hi CursorColumn cterm=NONE ctermbg=darkred ctermfg=white guibg=darkred guifg=white
 
 let g:lengthmatters_on_by_default = 0
 set nocompatible

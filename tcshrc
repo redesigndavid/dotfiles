@@ -16,6 +16,7 @@ setenv EDITOR vim
 setenv PATH .:$HOME/bin:/usr/local/bin:$PATH
 setenv MANPATH /usr/man:/usr/local/man:/usr/lang/man:/usr/local/man:/usr/local/share:/usr/local/share/man:/usr/share/man
 setenv EMAIL redesigndavid@gmail.com
+setenv TERM xterm-256color
 
 if (`uname` == 'Darwin') then
     set prompt = '%B%{\033[32m%}%B%~%b %{^[[0m%}%b> '
