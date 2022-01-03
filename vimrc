@@ -21,7 +21,7 @@ Plug 'ntpeters/vim-better-whitespace'
 Plug 'whatyouhide/vim-lengthmatters'
 Plug 'MarcWeber/vim-addon-mw-utils'
 Plug 'tomtom/tlib_vim'
-Plug 'liuchengxu/vim-which-key', { 'on': ['WhichKey', 'WhichKey!'] }
+Plug 'liuchengxu/vim-which-key'
 Plug 'junegunn/fzf', { 'do': { -> fzf#install() } }
 
 call plug#end()
@@ -74,10 +74,6 @@ set clipboard=unnamed
 " rebind leader key
 let mapleader = ","
 
-nnoremap <silent> <leader>      :<c-u>WhichKey ','<CR>
-"nnoremap <silent> <localleader> :<c-u>WhichKey  ','<CR>
-
-
 " ale lint setup
 let g:ale_lint_delay = 10
 let g:ale_python_flake8_executable = 'flake8'
@@ -87,6 +83,13 @@ let jedi#goto_command = ''
 let jedi#goto_assignments_command = ''
 let jedi#goto_definitions_command = ''
 let jedi#rename_command = ''
+let g:jedi#goto_stubs_command = ''
+let g:jedi#goto_definitions_command = ''
+let g:jedi#documentation_command = ''
+let g:jedi#usages_command = ''
+let g:jedi#completions_command = ''
+let g:jedi#rename_command = ''
+
 
 " abbreviations
 ia pdbpdb import pdb;  # XXXpdb.set_trace();  # XXX
@@ -100,3 +103,21 @@ let g:signify_cursorhold_normal = 0
 
 let g:lengthmatters_on_by_default = 0
 set nocompatible
+
+
+
+let g:which_key_map = {}
+let g:which_key_map['j'] = {
+      \ 'name' : '+jedi' ,
+      \ 'j' : [':call jedi#goto_assignments()'     , 'go-to-assignment']          ,
+      \ 'd' : [':call jedi#goto_definitions()'     , 'go-to-definition']          ,
+      \ 's' : [':call jedi#goto_stubs()'           , 'go-to-stubs']               ,
+      \ 'u' : [':call jedi#usages()'               , 'show-usages']               ,
+      \ 'r' : [':call jedi#rename()'               , 'rename']                    ,
+      \ 'k' : [':call jedi#show_documentation()'   , 'show-documentation']        ,
+      \ }
+
+autocmd VimEnter * call which_key#register(',', "g:which_key_map")
+nnoremap <silent> <leader>      :<c-u>WhichKey ','<CR>
+"nnoremap <silent> <localleader> :<c-u>WhichKey  ','<CR>
+

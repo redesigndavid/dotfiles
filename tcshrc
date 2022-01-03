@@ -1,5 +1,5 @@
 #!/bin/tcsh
-
+setenv SHELL /bin/tcsh
 # fix lc_all warnings
 setenv LC_ALL "en_US.UTF8"
 setenv LC_CTYPE "en_US.UTF8"
@@ -13,7 +13,7 @@ setenv PYTHONDONTWRITEBYTECODE 1
 # profile
 setenv PWD $cwd
 setenv EDITOR vim 
-setenv PATH .:$HOME/bin:/usr/local/bin:$PATH
+setenv PATH .:$HOME/bin:/opt/homebrew/bin:/usr/local/bin:$PATH
 setenv MANPATH /usr/man:/usr/local/man:/usr/lang/man:/usr/local/man:/usr/local/share:/usr/local/share/man:/usr/share/man
 setenv EMAIL redesigndavid@gmail.com
 setenv TERM xterm-256color
